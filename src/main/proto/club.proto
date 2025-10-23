@@ -1,0 +1,22 @@
+syntax = "proto3";
+package club;
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "com.findmyclub.grpc";
+option java_outer_classname = "ClubProto";
+
+message Club {
+  int32 id = 1;
+  string name = 2;
+  string location = 3;
+}
+
+message ClubList {
+  repeated Club clubs = 1;
+}
+
+service ClubService {
+  rpc GetAllClubs (google.protobuf.Empty) returns (ClubList);
+}

@@ -3,7 +3,7 @@ package com.findmyclub.model;
 import jakarta.persistence.*;
 
 @Entity @Table(name = "club")
-public class ClubDBtable
+public class Club
 {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer id;
 
@@ -11,9 +11,9 @@ public class ClubDBtable
 
   private String location;
 
-  public ClubDBtable() {}
+  public Club() {}
 
-  public ClubDBtable(String name, String location){
+  public Club(String name, String location){
     this.name = name;
     this.location = location;
   }

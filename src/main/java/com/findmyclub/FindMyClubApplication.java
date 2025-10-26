@@ -1,5 +1,7 @@
 package com.findmyclub;
 
+import com.findmyclub.model.ClubDBtable;
+import com.findmyclub.repositories.ClubRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,15 +16,12 @@ public class FindMyClubApplication
     SpringApplication.run(FindMyClubApplication.class, args);
   }
 
-  @Bean CommandLineRunner testDatabaseConnection(JdbcTemplate jdbcTemplate) {
+  @Bean CommandLineRunner demo(ClubRepository clubRepository) {
     return args -> {
-      System.out.println(" Checking database connection...");
-      try {
-        Integer count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM information_schema.tables", Integer.class);
-        System.out.println(" Database connection OK! Table count = " + count);
-      } catch (Exception e) {
-        System.err.println(" Database connection FAILED: " + e.getMessage());
-      }
+      System.out.println(" demo...");
+      ClubDBtable clubDBtable = new ClubDBtable("Music","Horsens");
+      clubRepository.save(clubDBtable);
+
     };
   }
 }

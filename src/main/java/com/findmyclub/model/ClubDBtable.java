@@ -11,6 +11,10 @@ public class ClubDBtable
 
   private String location;
 
+  public ClubDBtable(String name, String location){
+    this.name = name;
+    this.location = location;
+  }
   // Getters and Setters
   public Integer getId()
   {

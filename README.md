@@ -16,7 +16,7 @@ docker --version
 docker compose version
 
 2. Open Docker Desktop
-3. Navigate to the file docker-compose and run it
+3. Navigate to the file docker-compose and run it using **docker compose up --build**
 4. You should see the following in the Docker Desktop ![img_5.png](ReadMeImg/img_5.png)
 5. Well done, the database is ready to be used. No need to install it locally
 6. Run the application and play with the APIs (using Postman)

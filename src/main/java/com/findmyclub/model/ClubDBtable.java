@@ -11,6 +11,8 @@ public class ClubDBtable
 
   private String location;
 
+  public ClubDBtable() {}
+
   public ClubDBtable(String name, String location){
     this.name = name;
     this.location = location;

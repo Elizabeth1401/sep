@@ -19,8 +19,27 @@ public class FindMyClubApplication
   @Bean CommandLineRunner demo(ClubRepository clubRepository) {
     return args -> {
       System.out.println(" demo...");
-      ClubDBtable clubDBtable = new ClubDBtable("Music","Horsens");
-      clubRepository.save(clubDBtable);
+      ClubDBtable clubDBtable1 = new ClubDBtable("Music","Horsens");
+      ClubDBtable clubDBtable2 = new ClubDBtable("Box","Copenhagen");
+      ClubDBtable clubDBtable3 = new ClubDBtable("Dance","Aarhus");
+
+      clubRepository.save(clubDBtable1);
+      clubRepository.save(clubDBtable2);
+      clubRepository.save(clubDBtable3);
+
+      var club = clubRepository.findById(11);
+
+      if (club.isPresent()) {
+        ClubDBtable clubDBtable = club.get();
+        System.out.println("Before update: " + clubDBtable.getName());
+
+        clubDBtable.setName("Updated Art");
+
+        clubRepository.save(clubDBtable);
+      }
+
+      clubRepository.deleteAll();
+
 
     };
   }

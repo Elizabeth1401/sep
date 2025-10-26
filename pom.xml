@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Parent Spring Boot -->
@@ -47,7 +48,6 @@
             <version>5.1.5</version>
         </dependency>
 
-
         <!-- Protobuf runtime -->
         <dependency>
             <groupId>com.google.protobuf</groupId>
@@ -62,7 +62,13 @@
             <version>2.36.0</version>
         </dependency>
 
-        <!-- Optional: Logging and testing -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
+        <!-- Logging and Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
@@ -84,7 +90,8 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot -->
+
+            <!-- Spring Boot Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -103,7 +110,7 @@
                         </goals>
                         <configuration>
                             <includeStdTypes>true</includeStdTypes>
-                            <protocVersion>3.21.6</protocVersion>
+                            <protocVersion>${protobuf.version}</protocVersion>
                             <inputDirectories>
                                 <include>src/main/proto</include>
                             </inputDirectories>
@@ -114,41 +121,38 @@
                                 </outputTarget>
                                 <outputTarget>
                                     <type>grpc-java</type>
-                                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.66.0</pluginArtifact>
+                                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}</pluginArtifact>
                                     <outputDirectory>target/generated-sources/protobuf/grpc-java</outputDirectory>
                                 </outputTarget>
                             </outputTargets>
-
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-        </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>3.5.0</version>
-                    <executions>
-                        <execution>
-                            <id>add-source</id>
-                            <phase>generate-sources</phase>
-                            <goals>
-                                <goal>add-source</goal>
-                            </goals>
-                            <configuration>
-                                <sources>
-                                    <source>target/generated-sources/protobuf/java</source>
-                                    <source>target/generated-sources/protobuf/grpc-java</source>
-                                </sources>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
 
+            <!-- Add generated-sources to classpath -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/generated-sources/protobuf/java</source>
+                                <source>target/generated-sources/protobuf/grpc-java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
     </build>
 
 </project>

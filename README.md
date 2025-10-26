@@ -1,5 +1,11 @@
-SEP3project
+*SEP3project-Java Spring Repo*
 
+**IMPORTANT!!!**
+
+Before you start working mark both java folders as source root and resources folders as resource root
+
+I will fix it later and it will automatically 
+![img_6.png](ReadMeImg/img_6.png)
 **How to use Docker to work with PostgresSQL?**
 
 1. Download docker

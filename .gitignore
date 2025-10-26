@@ -28,7 +28,6 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-!java-app.iml
 
 ### VS Code ###
 .vscode/

@@ -2,7 +2,8 @@ package com.findmyclub.model;
 
 import jakarta.persistence.*;
 
-@Entity @Table(name = "club") public class Club
+@Entity @Table(name = "club")
+public class Club
 {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer id;
 
@@ -10,6 +11,12 @@ import jakarta.persistence.*;
 
   private String location;
 
+  public Club() {}
+
+  public Club(String name, String location){
+    this.name = name;
+    this.location = location;
+  }
   // Getters and Setters
   public Integer getId()
   {

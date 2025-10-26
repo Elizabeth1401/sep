@@ -2,7 +2,8 @@ package com.findmyclub.model;
 
 import jakarta.persistence.*;
 
-@Entity @Table(name = "club") public class Club
+@Entity @Table(name = "club")
+public class ClubDBtable
 {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer id;
 

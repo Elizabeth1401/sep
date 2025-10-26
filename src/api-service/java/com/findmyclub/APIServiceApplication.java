@@ -22,9 +22,9 @@ public class APIServiceApplication
 
   //for you to start with data inside the DB
   @Bean
-  CommandLineRunner demo(ClubRepository clubRepository, UserRepository userRepository) {
+  CommandLineRunner demoAPI(ClubRepository clubRepository) {
     return args -> {
-      userRepository.deleteAll();
+      clubRepository.deleteAll();
       System.out.println("Seeding data...");
       Club club1 = new Club("Music","Horsens");
       Club club2 = new Club("Box","Copenhagen");

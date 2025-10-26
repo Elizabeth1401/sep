@@ -21,7 +21,7 @@ public class AuthServiceApplication
     }
 
     @Bean
-    CommandLineRunner demo(UserRepository userRepository) {
+    CommandLineRunner demoUser(UserRepository userRepository) {
         return args -> {
             userRepository.deleteAll();
             System.out.println("Seeding data...");

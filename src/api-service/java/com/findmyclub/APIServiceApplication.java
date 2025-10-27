@@ -1,7 +1,7 @@
 package com.findmyclub;
 import com.findmyclub.model.Club;
 import com.findmyclub.repositories.ClubRepository;
-import com.findmyclub.repositories.UserRepository;
+//import com.findmyclub.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -23,7 +23,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public User create(@RequestBody UserDTO userDTO) {
         User user = new User(userDTO.username, userDTO.password);
-        //for now we do not encrypt username and password it will be in the future
+        //for now, we do not encrypt username and password it will be in the future
         return userRepository.save(user);
     }
 

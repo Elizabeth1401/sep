@@ -19,20 +19,4 @@ public class AuthServiceApplication
         app.setDefaultProperties(Map.of("server.port", "8081"));
         app.run(args);
     }
-
-    @Bean
-    CommandLineRunner demoUser(UserRepository userRepository) {
-        return args -> {
-            userRepository.deleteAll();
-            System.out.println("Seeding data...");
-            User user1 = new User("liza", "12345");
-            User user2 = new User("teo", "mypassword");
-            User user3 = new User("bianca", "qwerty");
-
-            userRepository.save(user1);
-            userRepository.save(user2);
-            userRepository.save(user3);
-
-        };
-    }
 }

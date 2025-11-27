@@ -1,13 +1,5 @@
 *SEP3project-Java Spring Repo*
 
-**IMPORTANT!!!**
-
-Before you start working mark both java folders as source root and resources folders as resource root
-
-I will fix it later and it will automatically 
-![img_6.png](ReadMeImg/img_6.png)
-**How to use Docker to work with PostgresSQL?**
-
 1. Download docker
 If you don’t have Docker installed yet:
 
@@ -38,3 +30,9 @@ docker compose version
 ![img_2.png](ReadMeImg/img_2.png)
 ![img_3.png](ReadMeImg/img_3.png)
 ![img_4.png](ReadMeImg/img_4.png)
+
+
+**How to test in Postman Registration and Login endpoints**
+![img_4.png](ReadMeImg/img_7.png)
+![img_4.png](ReadMeImg/img_8.png)
+

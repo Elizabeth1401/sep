@@ -12,12 +12,31 @@ message ClubProto{
 message ClubListProto{
   repeated ClubProto clubs = 1;
 }
+
+  message LoginRequestProto {
+    string email = 1;         // auth
+    string password = 2;
+  }
+
+  message RegisterRequestProto {
+    string username = 1;
+    string email = 2;         //auth
+    string password = 3;
+  }
+
+  message UserProto {
+    int32 id = 1;
+    string username = 2;      //auth
+    string email = 3;
+  }
+
 service FindMyClubProtoService {
   rpc SendRequest (RequestProto) returns (ResponseProto);
 }
 enum HandlerTypeProto {
   HANDLER_UNKNOWN = 0;
   HANDLER_CLUB = 1;
+  HANDLER_AUTH = 2; //auth
 }
 
 enum ActionTypeProto {
@@ -27,6 +46,8 @@ enum ActionTypeProto {
   ACTION_UPDATE = 3;
   ACTION_DELETE = 4;
   ACTION_LIST = 5;
+  ACTION_LOGIN = 6; //auth
+  ACTION_REGISTER = 7; //auth
 }
 enum StatusTypeProto {
   STATUS_UNKNOWN = 0;

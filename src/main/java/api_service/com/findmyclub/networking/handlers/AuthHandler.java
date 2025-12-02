@@ -83,7 +83,7 @@ public class AuthHandler implements FindMyClubHandler {
                 return registerRequestProto.getPassword();
             }
         };
-        authService.register(dto);
+        authService.register(dto);//trycatch
 
         // if everything is successful
         return StringValue.of("Registered");

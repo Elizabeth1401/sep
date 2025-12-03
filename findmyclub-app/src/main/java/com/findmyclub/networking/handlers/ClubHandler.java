@@ -1,9 +1,9 @@
-package main.java.com.findmyclub.networking.handlers;
+package com.findmyclub.networking.handlers;
 
-import main.java.com.findmyclub.Grpc.Sep3.ActionTypeProto;
-import main.java.com.findmyclub.Grpc.Sep3.ClubProto;
-import main.java.com.findmyclub.networking.handlers.FindMyClubHandler;
-import main.java.com.findmyclub.service.ClubService;
+import com.findmyclub.Grpc.Sep3.ActionTypeProto;
+import com.findmyclub.Grpc.Sep3.ClubProto;
+import com.findmyclub.networking.handlers.FindMyClubHandler;
+import com.findmyclub.service.ClubService;
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;

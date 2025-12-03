@@ -1,7 +1,7 @@
-package main.java.com.findmyclub.startup;
+package com.findmyclub.startup;
 
-import main.java.com.findmyclub.repositories.ClubRepository;
-import main.java.com.findmyclub.service.ClubServiceDatabase;
+import com.findmyclub.repositories.ClubRepository;
+import com.findmyclub.service.ClubServiceDatabase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

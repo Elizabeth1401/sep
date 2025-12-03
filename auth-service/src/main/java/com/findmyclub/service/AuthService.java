@@ -1,9 +1,9 @@
-package main.java.com.findmyclub.service;
+package com.findmyclub.service;
 
-import main.java.com.findmyclub.DTO.LoginRequest;
-import main.java.com.findmyclub.DTO.RegisterRequest;
-import main.java.com.findmyclub.model.User;
-import main.java.com.findmyclub.repositories.UserRepository;
+import com.findmyclub.DTO.LoginRequest;
+import com.findmyclub.DTO.RegisterRequest;
+import com.findmyclub.model.User;
+import com.findmyclub.repositories.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class AuthService {
     //--------------
 
     public void register(
-        main.java.com.findmyclub.DTO.@Valid RegisterRequest request){
+        com.findmyclub.DTO.@Valid RegisterRequest request){
         validateUsername(request.getUsername());
         validateEmail(request.getEmail());
         validatePassword(request.getPassword());
@@ -43,7 +43,7 @@ public class AuthService {
     // LOGIN
     //--------------
 
-    public User login(main.java.com.findmyclub.DTO.@Valid LoginRequest request){
+    public User login(com.findmyclub.DTO.@Valid LoginRequest request){
         return userRepository.findByEmail(request.getEmail())
                 .filter(user -> passwordEncoder.matches(request.getPassword(), user.getPasswordHash()))
                 .orElseThrow(()-> new IllegalArgumentException("Invalid email or password"));

@@ -1,4 +1,4 @@
-package main.java.com.findmyclub.networking;
+package com.findmyclub.networking;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.stereotype.Service;
@@ -8,10 +8,11 @@ import java.io.IOException;
 @Service
 public class FindMyClubGrpcServer{
   private static final int PORT = 10032;
-  private final FindMyClubMainHandler mainHandler;
+  private final com.findmyclub.networking.FindMyClubMainHandler mainHandler;
   private Server grpcServer;
 
-  public FindMyClubGrpcServer(FindMyClubMainHandler mainHandler) {
+  public FindMyClubGrpcServer(
+      com.findmyclub.networking.FindMyClubMainHandler mainHandler) {
     this.mainHandler = mainHandler;
   }
   public void start() {

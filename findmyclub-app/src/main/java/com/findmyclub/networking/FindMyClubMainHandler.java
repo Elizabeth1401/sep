@@ -1,11 +1,11 @@
-package main.java.com.findmyclub.networking;
+package com.findmyclub.networking;
 
-import main.java.com.findmyclub.Grpc.FindMyClubProtoServiceGrpc;
-import main.java.com.findmyclub.Grpc.Sep3.RequestProto;
-import main.java.com.findmyclub.Grpc.Sep3.ResponseProto;
-import main.java.com.findmyclub.Grpc.Sep3.StatusTypeProto;
-import main.java.com.findmyclub.networking.handlers.FindMyClubHandler;
-import main.java.com.findmyclub.startup.ServiceProvider;
+import com.findmyclub.Grpc.FindMyClubProtoServiceGrpc;
+import com.findmyclub.Grpc.Sep3.RequestProto;
+import com.findmyclub.Grpc.Sep3.ResponseProto;
+import com.findmyclub.Grpc.Sep3.StatusTypeProto;
+import com.findmyclub.networking.handlers.FindMyClubHandler;
+import com.findmyclub.startup.ServiceProvider;
 import com.google.protobuf.Any;
 import com.google.protobuf.Message;
 import com.google.protobuf.StringValue;

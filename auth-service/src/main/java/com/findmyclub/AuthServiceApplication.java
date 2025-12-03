@@ -1,4 +1,4 @@
-package main.java.com.findmyclub;
+package com.findmyclub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import java.util.Map;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "main.java.com.findmyclub.repositories")
+@EnableJpaRepositories(basePackages = "com.findmyclub.repositories")
 @EntityScan(basePackages = "com.findmyclub.model")
 public class AuthServiceApplication
 {

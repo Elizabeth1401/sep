@@ -1,6 +1,6 @@
-package main.java.com.findmyclub.networking;
+package com.findmyclub.networking;
 
-import main.java.com.findmyclub.networking.FindMyClubGrpcServer;
+import com.findmyclub.networking.FindMyClubGrpcServer;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 

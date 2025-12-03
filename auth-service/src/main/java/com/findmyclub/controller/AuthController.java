@@ -1,9 +1,9 @@
-package main.java.com.findmyclub.controller;
+package com.findmyclub.controller;
 
-import main.java.com.findmyclub.DTO.LoginRequest;
-import main.java.com.findmyclub.DTO.RegisterRequest;
-import main.java.com.findmyclub.model.User;
-import main.java.com.findmyclub.service.AuthService;
+import com.findmyclub.DTO.LoginRequest;
+import com.findmyclub.DTO.RegisterRequest;
+import com.findmyclub.model.User;
+import com.findmyclub.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

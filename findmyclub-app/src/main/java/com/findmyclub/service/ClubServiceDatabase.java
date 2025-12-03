@@ -1,9 +1,9 @@
-package main.java.com.findmyclub.service;
+package com.findmyclub.service;
 
-import main.java.com.findmyclub.Grpc.Sep3.ClubListProto;
-import main.java.com.findmyclub.Grpc.Sep3.ClubProto;
-import main.java.com.findmyclub.model.Club;
-import main.java.com.findmyclub.repositories.ClubRepository;
+import com.findmyclub.Grpc.Sep3.ClubListProto;
+import com.findmyclub.Grpc.Sep3.ClubProto;
+import com.findmyclub.model.Club;
+import com.findmyclub.repositories.ClubRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

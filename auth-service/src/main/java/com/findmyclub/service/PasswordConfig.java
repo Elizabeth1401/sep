@@ -1,4 +1,4 @@
-package main.java.com.findmyclub.service;
+package com.findmyclub.service;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

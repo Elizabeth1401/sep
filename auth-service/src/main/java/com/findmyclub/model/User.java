@@ -1,4 +1,4 @@
-package main.java.com.findmyclub.model;
+package com.findmyclub.model;
 
 import jakarta.persistence.*;
 

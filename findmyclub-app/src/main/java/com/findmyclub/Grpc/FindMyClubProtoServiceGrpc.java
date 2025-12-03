@@ -12,32 +12,32 @@ public final class FindMyClubProtoServiceGrpc {
 
   private FindMyClubProtoServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "api_service.com.findmyclub.Grpc.FindMyClubProtoService";
+  public static final java.lang.String SERVICE_NAME = "com.findmyclub.Grpc.FindMyClubProtoService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<main.java.com.findmyclub.Grpc.Sep3.RequestProto,
-      main.java.com.findmyclub.Grpc.Sep3.ResponseProto> getSendRequestMethod;
+  private static volatile io.grpc.MethodDescriptor<com.findmyclub.Grpc.Sep3.RequestProto,
+      com.findmyclub.Grpc.Sep3.ResponseProto> getSendRequestMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SendRequest",
-      requestType = main.java.com.findmyclub.Grpc.Sep3.RequestProto.class,
-      responseType = main.java.com.findmyclub.Grpc.Sep3.ResponseProto.class,
+      requestType = com.findmyclub.Grpc.Sep3.RequestProto.class,
+      responseType = com.findmyclub.Grpc.Sep3.ResponseProto.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<main.java.com.findmyclub.Grpc.Sep3.RequestProto,
-      main.java.com.findmyclub.Grpc.Sep3.ResponseProto> getSendRequestMethod() {
-    io.grpc.MethodDescriptor<main.java.com.findmyclub.Grpc.Sep3.RequestProto, main.java.com.findmyclub.Grpc.Sep3.ResponseProto> getSendRequestMethod;
+  public static io.grpc.MethodDescriptor<com.findmyclub.Grpc.Sep3.RequestProto,
+      com.findmyclub.Grpc.Sep3.ResponseProto> getSendRequestMethod() {
+    io.grpc.MethodDescriptor<com.findmyclub.Grpc.Sep3.RequestProto, com.findmyclub.Grpc.Sep3.ResponseProto> getSendRequestMethod;
     if ((getSendRequestMethod = FindMyClubProtoServiceGrpc.getSendRequestMethod) == null) {
       synchronized (FindMyClubProtoServiceGrpc.class) {
         if ((getSendRequestMethod = FindMyClubProtoServiceGrpc.getSendRequestMethod) == null) {
           FindMyClubProtoServiceGrpc.getSendRequestMethod = getSendRequestMethod =
-              io.grpc.MethodDescriptor.<main.java.com.findmyclub.Grpc.Sep3.RequestProto, main.java.com.findmyclub.Grpc.Sep3.ResponseProto>newBuilder()
+              io.grpc.MethodDescriptor.<com.findmyclub.Grpc.Sep3.RequestProto, com.findmyclub.Grpc.Sep3.ResponseProto>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SendRequest"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  main.java.com.findmyclub.Grpc.Sep3.RequestProto.getDefaultInstance()))
+                  com.findmyclub.Grpc.Sep3.RequestProto.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  main.java.com.findmyclub.Grpc.Sep3.ResponseProto.getDefaultInstance()))
+                  com.findmyclub.Grpc.Sep3.ResponseProto.getDefaultInstance()))
               .setSchemaDescriptor(new FindMyClubProtoServiceMethodDescriptorSupplier("SendRequest"))
               .build();
         }
@@ -52,7 +52,7 @@ public final class FindMyClubProtoServiceGrpc {
   public static FindMyClubProtoServiceStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<FindMyClubProtoServiceStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<FindMyClubProtoServiceStub>() {
-        @Override
+        @java.lang.Override
         public FindMyClubProtoServiceStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new FindMyClubProtoServiceStub(channel, callOptions);
         }
@@ -67,7 +67,7 @@ public final class FindMyClubProtoServiceGrpc {
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<FindMyClubProtoServiceBlockingStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<FindMyClubProtoServiceBlockingStub>() {
-        @Override
+        @java.lang.Override
         public FindMyClubProtoServiceBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new FindMyClubProtoServiceBlockingStub(channel, callOptions);
         }
@@ -82,7 +82,7 @@ public final class FindMyClubProtoServiceGrpc {
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<FindMyClubProtoServiceFutureStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<FindMyClubProtoServiceFutureStub>() {
-        @Override
+        @java.lang.Override
         public FindMyClubProtoServiceFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new FindMyClubProtoServiceFutureStub(channel, callOptions);
         }
@@ -96,8 +96,8 @@ public final class FindMyClubProtoServiceGrpc {
 
     /**
      */
-    default void sendRequest(main.java.com.findmyclub.Grpc.Sep3.RequestProto request,
-        io.grpc.stub.StreamObserver<main.java.com.findmyclub.Grpc.Sep3.ResponseProto> responseObserver) {
+    default void sendRequest(com.findmyclub.Grpc.Sep3.RequestProto request,
+        io.grpc.stub.StreamObserver<com.findmyclub.Grpc.Sep3.ResponseProto> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSendRequestMethod(), responseObserver);
     }
   }
@@ -108,7 +108,7 @@ public final class FindMyClubProtoServiceGrpc {
   public static abstract class FindMyClubProtoServiceImplBase
       implements io.grpc.BindableService, AsyncService {
 
-    @Override public final io.grpc.ServerServiceDefinition bindService() {
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return FindMyClubProtoServiceGrpc.bindService(this);
     }
   }
@@ -123,7 +123,7 @@ public final class FindMyClubProtoServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected FindMyClubProtoServiceStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new FindMyClubProtoServiceStub(channel, callOptions);
@@ -131,8 +131,8 @@ public final class FindMyClubProtoServiceGrpc {
 
     /**
      */
-    public void sendRequest(main.java.com.findmyclub.Grpc.Sep3.RequestProto request,
-        io.grpc.stub.StreamObserver<main.java.com.findmyclub.Grpc.Sep3.ResponseProto> responseObserver) {
+    public void sendRequest(com.findmyclub.Grpc.Sep3.RequestProto request,
+        io.grpc.stub.StreamObserver<com.findmyclub.Grpc.Sep3.ResponseProto> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSendRequestMethod(), getCallOptions()), request, responseObserver);
     }
@@ -148,7 +148,7 @@ public final class FindMyClubProtoServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected FindMyClubProtoServiceBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new FindMyClubProtoServiceBlockingStub(channel, callOptions);
@@ -156,7 +156,7 @@ public final class FindMyClubProtoServiceGrpc {
 
     /**
      */
-    public main.java.com.findmyclub.Grpc.Sep3.ResponseProto sendRequest(main.java.com.findmyclub.Grpc.Sep3.RequestProto request) {
+    public com.findmyclub.Grpc.Sep3.ResponseProto sendRequest(com.findmyclub.Grpc.Sep3.RequestProto request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSendRequestMethod(), getCallOptions(), request);
     }
@@ -172,7 +172,7 @@ public final class FindMyClubProtoServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected FindMyClubProtoServiceFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new FindMyClubProtoServiceFutureStub(channel, callOptions);
@@ -180,8 +180,8 @@ public final class FindMyClubProtoServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<main.java.com.findmyclub.Grpc.Sep3.ResponseProto> sendRequest(
-        main.java.com.findmyclub.Grpc.Sep3.RequestProto request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.findmyclub.Grpc.Sep3.ResponseProto> sendRequest(
+        com.findmyclub.Grpc.Sep3.RequestProto request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSendRequestMethod(), getCallOptions()), request);
     }
@@ -202,21 +202,21 @@ public final class FindMyClubProtoServiceGrpc {
       this.methodId = methodId;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_SEND_REQUEST:
-          serviceImpl.sendRequest((main.java.com.findmyclub.Grpc.Sep3.RequestProto) request,
-              (io.grpc.stub.StreamObserver<main.java.com.findmyclub.Grpc.Sep3.ResponseProto>) responseObserver);
+          serviceImpl.sendRequest((com.findmyclub.Grpc.Sep3.RequestProto) request,
+              (io.grpc.stub.StreamObserver<com.findmyclub.Grpc.Sep3.ResponseProto>) responseObserver);
           break;
         default:
           throw new AssertionError();
       }
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
@@ -232,8 +232,8 @@ public final class FindMyClubProtoServiceGrpc {
           getSendRequestMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-                main.java.com.findmyclub.Grpc.Sep3.RequestProto,
-                main.java.com.findmyclub.Grpc.Sep3.ResponseProto>(
+              com.findmyclub.Grpc.Sep3.RequestProto,
+              com.findmyclub.Grpc.Sep3.ResponseProto>(
                 service, METHODID_SEND_REQUEST)))
         .build();
   }
@@ -242,12 +242,12 @@ public final class FindMyClubProtoServiceGrpc {
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     FindMyClubProtoServiceBaseDescriptorSupplier() {}
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return main.java.com.findmyclub.Grpc.Sep3.getDescriptor();
+      return com.findmyclub.Grpc.Sep3.getDescriptor();
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
       return getFileDescriptor().findServiceByName("FindMyClubProtoService");
     }
@@ -261,13 +261,13 @@ public final class FindMyClubProtoServiceGrpc {
   private static final class FindMyClubProtoServiceMethodDescriptorSupplier
       extends FindMyClubProtoServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    FindMyClubProtoServiceMethodDescriptorSupplier(String methodName) {
+    FindMyClubProtoServiceMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
       return getServiceDescriptor().findMethodByName(methodName);
     }

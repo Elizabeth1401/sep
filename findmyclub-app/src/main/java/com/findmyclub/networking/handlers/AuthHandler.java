@@ -1,12 +1,12 @@
-package main.java.com.findmyclub.networking.handlers;
+package com.findmyclub.networking.handlers;
 
-import main.java.com.findmyclub.Grpc.Sep3;
-import main.java.com.findmyclub.Grpc.Sep3.ActionTypeProto;
-import main.java.com.findmyclub.networking.handlers.FindMyClubHandler;
-import main.java.com.findmyclub.DTO.LoginRequest;
-import main.java.com.findmyclub.DTO.RegisterRequest;
-import main.java.com.findmyclub.model.User;
-import main.java.com.findmyclub.service.AuthService;
+import com.findmyclub.Grpc.Sep3;
+import com.findmyclub.Grpc.Sep3.ActionTypeProto;
+import com.findmyclub.networking.handlers.FindMyClubHandler;
+import com.findmyclub.DTO.LoginRequest;
+import com.findmyclub.DTO.RegisterRequest;
+import com.findmyclub.model.User;
+import com.findmyclub.service.AuthService;
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;

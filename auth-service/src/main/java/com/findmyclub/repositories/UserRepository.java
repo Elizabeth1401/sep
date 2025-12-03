@@ -1,6 +1,6 @@
-package main.java.com.findmyclub.repositories;
+package com.findmyclub.repositories;
 
-import main.java.com.findmyclub.model.User;
+import com.findmyclub.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

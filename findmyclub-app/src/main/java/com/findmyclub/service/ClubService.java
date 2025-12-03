@@ -1,7 +1,7 @@
-package main.java.com.findmyclub.service;
+package com.findmyclub.service;
 
-import main.java.com.findmyclub.Grpc.Sep3.ClubListProto;
-import main.java.com.findmyclub.Grpc.Sep3.ClubProto;
+import com.findmyclub.Grpc.Sep3.ClubListProto;
+import com.findmyclub.Grpc.Sep3.ClubProto;
 import org.springframework.stereotype.Service;
 
 @Service

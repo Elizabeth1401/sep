@@ -1,8 +1,8 @@
-package main.java.com.findmyclub.controller;
+package com.findmyclub.controller;
 
-import main.java.com.findmyclub.DTO.ClubDTO;
-import main.java.com.findmyclub.model.Club;
-import main.java.com.findmyclub.repositories.ClubRepository;
+import com.findmyclub.DTO.ClubDTO;
+import com.findmyclub.model.Club;
+import com.findmyclub.repositories.ClubRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;

@@ -1,13 +1,12 @@
 package com.findmyclub.startup;
 
-//import api_service.com.findmyclub.repositories.ClubRepository;
-import main.java.com.findmyclub.networking.handlers.AuthHandler;
-import main.java.com.findmyclub.networking.handlers.ClubHandler;
-import main.java.com.findmyclub.networking.handlers.FindMyClubHandler;
-import main.java.com.findmyclub.repositories.ClubRepository;
-import main.java.com.findmyclub.service.ClubService;
-import main.java.com.findmyclub.service.ClubServiceDatabase;
-import main.java.com.findmyclub.service.AuthService;
+import com.findmyclub.repositories.ClubRepository;
+import com.findmyclub.networking.handlers.AuthHandler;
+import com.findmyclub.networking.handlers.ClubHandler;
+import com.findmyclub.networking.handlers.FindMyClubHandler;
+import com.findmyclub.service.ClubService;
+import com.findmyclub.service.ClubServiceDatabase;
+import com.findmyclub.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,6 @@ public class ServiceProvider {
   @Autowired
   private ClubServiceDatabase clubServiceDatabase; // injected automatically
 
-  @Autowired
   private ClubRepository clubRepository; // injected automatically
 
     @Autowired

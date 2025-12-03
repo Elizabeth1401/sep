@@ -29,6 +29,7 @@ public class FindMyClubMainHandler extends FindMyClubProtoServiceGrpc.FindMyClub
       // Route request based on HandlerType
       FindMyClubHandler handler = switch (request.getHandler()) {
         case HANDLER_CLUB -> serviceProvider.getClubHandler();
+        case HANDLER_AUTH -> serviceProvider.getAuthHandler();   // handling authentication
         default -> throw new IllegalArgumentException("Unknown handler type");
       };
       // Message is the protobuf object

@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import java.util.Map;
 
 @SpringBootApplication(scanBasePackages = {
     "com.findmyclub.startup",
@@ -17,14 +18,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
     "com.findmyclub.networking"
 })
 @EnableJpaRepositories("com.findmyclub.repositories")
-@EntityScan("api_service.com.findmyclub.model")
+@EntityScan("com.findmyclub.model")
 public class APIServiceApplication
 {
   public static void main(String[] args)
   {
-    ApplicationContext context = (SpringApplication.run(APIServiceApplication.class,args));
-    FindMyClubGrpcServer server = context.getBean(FindMyClubGrpcServer.class);
-    server.start();
+    SpringApplication app = new SpringApplication(APIServiceApplication.class);
+    app.setDefaultProperties(Map.of("server.port", "8080"));
+    ApplicationContext context = app.run(args);
+
+//    FindMyClubGrpcServer server = context.getBean(FindMyClubGrpcServer.class);
+//    server.start();
   }
 
   //for you to start with data inside the DB

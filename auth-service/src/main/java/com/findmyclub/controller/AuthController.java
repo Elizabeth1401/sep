@@ -1,6 +1,7 @@
 package com.findmyclub.controller;
 
 import com.findmyclub.DTO.LoginRequest;
+import com.findmyclub.DTO.LoginResponse;
 import com.findmyclub.DTO.RegisterRequest;
 import com.findmyclub.model.User;
 import com.findmyclub.service.AuthService;
@@ -29,9 +30,11 @@ public class AuthController {
 
     //Login endpoint
     @PostMapping ("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request){
-        User user = authService.login(request);
-        return ResponseEntity.ok("Login successful");
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request){
+
+        LoginResponse loginResponse = authService.login(request);
+
+        return ResponseEntity.ok(loginResponse);
     }
 
 }

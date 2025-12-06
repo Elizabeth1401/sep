@@ -1,8 +1,6 @@
 package com.findmyclub.service;
 
 import com.findmyclub.DTO.LoginRequest;
-import com.findmyclub.DTO.LoginResponse;
-import com.findmyclub.DTO.RegisterRequest;
 import com.findmyclub.model.User;
 import com.findmyclub.repositories.UserRepository;
 import com.findmyclub.security.JWTService;
@@ -41,17 +39,13 @@ public class AuthService {
     }
 
     // LOGIN
-    public LoginResponse login(@Valid LoginRequest request){
+    public String login(@Valid LoginRequest request){
         User user =  userRepository.findByEmail(request.getEmail())
                 .filter(u -> passwordEncoder.matches(request.getPassword(), u.getPasswordHash()))
                 .orElseThrow(()-> new IllegalArgumentException("Invalid email or password"));
         String token = jwtService.generateToken(user);
 
-        return new LoginResponse(
-                token,
-                user.getUsername(),
-                user.getEmail()
-        );
+        return token;
     }
 
     //--------------

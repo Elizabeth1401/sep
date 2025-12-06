@@ -15,6 +15,7 @@ public class JWTService {
         return Jwts.builder()
                 .setSubject(user.getEmail())
                 .claim("username", user.getUsername())
+                .claim("email", user.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+ 3600000)) // 1 hour
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)

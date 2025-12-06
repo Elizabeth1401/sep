@@ -2,7 +2,6 @@ package com.findmyclub.controller;
 
 import com.findmyclub.DTO.LoginRequest;
 import com.findmyclub.DTO.RegisterRequest;
-import com.findmyclub.model.User;
 import com.findmyclub.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -29,9 +28,11 @@ public class AuthController {
 
     //Login endpoint
     @PostMapping ("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request){
-        User user = authService.login(request);
-        return ResponseEntity.ok("Login successful");
+    public ResponseEntity<String> login(@Valid @RequestBody LoginRequest request){
+
+        String token = authService.login(request);
+
+        return ResponseEntity.ok(token);
     }
 
 }

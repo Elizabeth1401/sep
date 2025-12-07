@@ -1,6 +1,7 @@
 package com.findmyclub.service;
 
 import com.findmyclub.DTO.LoginRequest;
+import com.findmyclub.DTO.RegisterRequest;
 import com.findmyclub.model.User;
 import com.findmyclub.repositories.UserRepository;
 import com.findmyclub.security.JWTService;
@@ -22,20 +23,42 @@ public class AuthService {
     }
 
     // REGISTRATION
-    public void register(
-        com.findmyclub.DTO.@Valid RegisterRequest request){
-        validateUsername(request.getUsername());
-        validateEmail(request.getEmail());
-        validatePassword(request.getPassword());
+    public void register(RegisterRequest request){
 
-        String hash = passwordEncoder.encode(request.getPassword());
+        boolean isValidUsername =  validateUsername(request.getUsername());
+        boolean isValidEmail = validateEmail(request.getEmail());
+        boolean isValidPassword = validatePassword(request.getPassword());
 
-        User user = new User(
-                request.getUsername(),
-                request.getEmail(),
-                hash
-        );
-        userRepository.save(user);
+        if(isValidUsername && isValidEmail && isValidPassword){
+            String hash = passwordEncoder.encode(request.getPassword());
+
+            User user = new User(
+                    request.getUsername(),
+                    request.getEmail(),
+                    hash
+            );
+
+            userRepository.save(user);
+        }
+        else {
+            String errorMessage = "";
+
+            if(!isValidUsername){
+                errorMessage += "Username is already taken\n";
+            }
+            if(!isValidEmail){
+                errorMessage += "Email is already registered\n";
+            }
+            if(!isValidPassword){
+                errorMessage += "Password must contain letters, numbers, and symbols\n";
+            }
+
+            throw new IllegalArgumentException(errorMessage);
+        }
+
+
+
+
     }
 
     // LOGIN
@@ -51,23 +74,29 @@ public class AuthService {
     //--------------
     // VALIDATION
     //--------------
-    private void validateUsername(String username){
+    private boolean validateUsername(String username){
         if (userRepository.existsByUsername(username)){
-            throw new IllegalArgumentException("Username is already taken");
+            return false;
+           // throw new IllegalArgumentException("Username is already taken");
         }
+        return true;
     }
-    private void validateEmail(String email){
+    private boolean validateEmail(String email){
         if (userRepository.existsByEmail(email)){
-            throw new IllegalArgumentException("Email is already registered");
+            return false;
+           // throw new IllegalArgumentException("Email is already registered");
         }
+        return true;
     }
-    private void validatePassword(String password){
+    private boolean validatePassword(String password){
         boolean hasLetter = password.matches(".*[A-Za-z].*");
         boolean hasDigit = password.matches(".*[0-9].*");
         boolean hasSymbol = password.matches(".*[A-Za-z].*");
 
         if (!hasLetter && !hasDigit && !hasSymbol){
-            throw new IllegalArgumentException("Password must contain letters, numbers, and symbols");
+            return false;
+           // throw new IllegalArgumentException("Password must contain letters, numbers, and symbols");
         }
+        return true;
     }
 }

@@ -1,9 +1,9 @@
 package com.findmyclub.service;
 
 import com.findmyclub.DTO.LoginRequest;
-import com.findmyclub.DTO.RegisterRequest;
 import com.findmyclub.model.User;
 import com.findmyclub.repositories.UserRepository;
+import com.findmyclub.security.JWTService;
 import jakarta.validation.Valid;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,16 +13,15 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JWTService jwtService;
 
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JWTService jwtService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
     }
 
-    //--------------
     // REGISTRATION
-    //--------------
-
     public void register(
         com.findmyclub.DTO.@Valid RegisterRequest request){
         validateUsername(request.getUsername());
@@ -39,14 +38,14 @@ public class AuthService {
         userRepository.save(user);
     }
 
-    //--------------
     // LOGIN
-    //--------------
-
-    public User login(com.findmyclub.DTO.@Valid LoginRequest request){
-        return userRepository.findByEmail(request.getEmail())
-                .filter(user -> passwordEncoder.matches(request.getPassword(), user.getPasswordHash()))
+    public String login(@Valid LoginRequest request){
+        User user =  userRepository.findByEmail(request.getEmail())
+                .filter(u -> passwordEncoder.matches(request.getPassword(), u.getPasswordHash()))
                 .orElseThrow(()-> new IllegalArgumentException("Invalid email or password"));
+        String token = jwtService.generateToken(user);
+
+        return token;
     }
 
     //--------------

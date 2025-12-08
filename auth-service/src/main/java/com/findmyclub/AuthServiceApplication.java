@@ -16,7 +16,7 @@ public class AuthServiceApplication
     public static void main(String[] args)
     {
         SpringApplication app = new SpringApplication(AuthServiceApplication.class);
-        app.setDefaultProperties(Map.of("server.port", "8082")); // ha úgyis 8082-t használsz
+        app.setDefaultProperties(Map.of("server.port", "8082"));
         app.run(args);
     }
 }

@@ -21,9 +21,14 @@ public class AuthController {
     //Registration endpoint
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request){
-        authService.register(request);
-        return ResponseEntity.status(201).body("User successfully registered");
+    public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest request){
+        try{
+            authService.register(request);
+            return ResponseEntity.status(201).body("User successfully registered");
+        }
+        catch (IllegalArgumentException e){
+            return ResponseEntity.status(409).body(e.getMessage());
+        }
     }
 
     //Login endpoint

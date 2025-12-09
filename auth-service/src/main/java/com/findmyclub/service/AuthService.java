@@ -9,18 +9,34 @@ import jakarta.validation.Valid;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@Service
-public class AuthService {
+@Service public class AuthService
+{
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final JWTService jwtService;
+  private final UserRepository userRepository;
+  private final PasswordEncoder passwordEncoder;
+  private final JWTService jwtService;
 
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JWTService jwtService) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.jwtService = jwtService;
-    }
+  public AuthService(UserRepository userRepository,
+      PasswordEncoder passwordEncoder, JWTService jwtService)
+  {
+    this.userRepository = userRepository;
+    this.passwordEncoder = passwordEncoder;
+    this.jwtService = jwtService;
+  }
+
+  // REGISTRATION
+  public void register(RegisterRequest request)
+  {
+
+    boolean isValidUsername = validateUsername(request.getUsername());
+    boolean isValidEmail = validateEmail(request.getEmail());
+    boolean isValidPassword = validatePassword(request.getPassword());
+
+    if (isValidUsername && isValidEmail && isValidPassword)
+    {
+      String hash = passwordEncoder.encode(request.getPassword());
+
+      User user = new User(request.getUsername(), request.getEmail(), hash);
 
     // REGISTRATION
     public void register(RegisterRequest request){
@@ -60,16 +76,23 @@ public class AuthService {
 
 
     }
+    else
+    {
+      String errorMessage = "";
 
-    // LOGIN
-    public String login(@Valid LoginRequest request){
-        User user =  userRepository.findByEmail(request.getEmail())
-                .filter(u -> passwordEncoder.matches(request.getPassword(), u.getPasswordHash()))
-                .orElseThrow(()-> new IllegalArgumentException("Invalid email or password"));
-        String token = jwtService.generateToken(user);
+      if(!isValidUsername){
+        errorMessage += "Username is already taken; ";
+      }
+      if(!isValidEmail){
+        errorMessage += "Email is already registered; ";
+      }
+      if(!isValidPassword){
+        errorMessage += "Password must contain letters, numbers, and symbols";
+      }
 
-        return token;
+      throw new IllegalArgumentException(errorMessage);
     }
+  }
 
     //--------------
     // VALIDATION
@@ -99,4 +122,6 @@ public class AuthService {
         }
         return true;
     }
+    return true;
+  }
 }

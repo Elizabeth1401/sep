@@ -104,7 +104,6 @@ import org.springframework.stereotype.Service;
     {
       throw new IllegalArgumentException("Invalid email or password");
     }
-
     return jwtService.generateToken(user);
   }
 }

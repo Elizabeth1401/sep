@@ -48,7 +48,6 @@ import static org.mockito.Mockito.*;
 
   @Nested @DisplayName("Register - ZOMBIES") class RegisterTests
   {
-
     // S - Simple scenarios (happy path first)
     @Test @DisplayName("S - Should successfully register user with valid data") void simpleCase_ValidRegistration()
     {
@@ -233,7 +232,6 @@ import static org.mockito.Mockito.*;
 
   @Nested @DisplayName("Login - ZOMBIES") class LoginTests
   {
-
     // S - Simple scenarios (happy path first)
     @Test @DisplayName("S - Should successfully login with valid credentials") void simpleCase_ValidLogin()
     {

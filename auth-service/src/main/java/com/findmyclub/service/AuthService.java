@@ -38,7 +38,43 @@ import org.springframework.stereotype.Service;
 
       User user = new User(request.getUsername(), request.getEmail(), hash);
 
-      userRepository.save(user);
+    // REGISTRATION
+    public void register(RegisterRequest request){
+
+        boolean isValidUsername =  validateUsername(request.getUsername());
+        boolean isValidEmail = validateEmail(request.getEmail());
+        boolean isValidPassword = validatePassword(request.getPassword());
+
+        if(isValidUsername && isValidEmail && isValidPassword){
+            String hash = passwordEncoder.encode(request.getPassword());
+
+            User user = new User(
+                    request.getUsername(),
+                    request.getEmail(),
+                    hash
+            );
+
+            userRepository.save(user);
+        }
+        else {
+            String errorMessage = "";
+
+            if(!isValidUsername){
+                errorMessage += "Username is already taken\n";
+            }
+            if(!isValidEmail){
+                errorMessage += "Email is already registered\n";
+            }
+            if(!isValidPassword){
+                errorMessage += "Password must contain letters, numbers, and symbols\n";
+            }
+
+            throw new IllegalArgumentException(errorMessage);
+        }
+
+
+
+
     }
     else
     {
@@ -58,49 +94,33 @@ import org.springframework.stereotype.Service;
     }
   }
 
-  // LOGIN
-  public String login(@Valid LoginRequest request)
-  {
-    User user = userRepository.findByEmail(request.getEmail()).filter(
-        u -> passwordEncoder.matches(request.getPassword(),
-            u.getPasswordHash())).orElseThrow(
-        () -> new IllegalArgumentException("Invalid email or password"));
-    String token = jwtService.generateToken(user);
-
-    return token;
-  }
-
-  //--------------
-  // VALIDATION
-  //--------------
-  private boolean validateUsername(String username)
-  {
-    if (userRepository.existsByUsername(username))
-    {
-      return false;
-      // throw new IllegalArgumentException("Username is already taken");
+    //--------------
+    // VALIDATION
+    //--------------
+    private boolean validateUsername(String username){
+        if (userRepository.existsByUsername(username)){
+            return false;
+           // throw new IllegalArgumentException("Username is already taken");
+        }
+        return true;
     }
-    return true;
-  }
-
-  private boolean validateEmail(String email)
-  {
-    if (userRepository.existsByEmail(email))
-    {
-      return false;
-      // throw new IllegalArgumentException("Email is already registered");
+    private boolean validateEmail(String email){
+        if (userRepository.existsByEmail(email)){
+            return false;
+           // throw new IllegalArgumentException("Email is already registered");
+        }
+        return true;
     }
-    return true;
-  }
+    private boolean validatePassword(String password){
+        boolean hasLetter = password.matches(".*[A-Za-z].*");
+        boolean hasDigit = password.matches(".*[0-9].*");
+        boolean hasSymbol = password.matches(".*[A-Za-z].*");
 
-  private boolean validatePassword(String password)
-  {
-    boolean hasLetter = password.matches(".*[A-Za-z].*");
-    boolean hasDigit = password.matches(".*[0-9].*");
-
-    if (!hasLetter || !hasDigit)
-    {
-      return false;
+        if (!hasLetter && !hasDigit && !hasSymbol){
+            return false;
+           // throw new IllegalArgumentException("Password must contain letters, numbers, and symbols");
+        }
+        return true;
     }
     return true;
   }

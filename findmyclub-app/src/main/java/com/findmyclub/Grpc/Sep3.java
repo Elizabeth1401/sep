@@ -425,6 +425,30 @@ public final class Sep3 {
      */
     com.google.protobuf.ByteString
         getLocationBytes();
+
+    /**
+     * <code>string category = 4;</code>
+     * @return The category.
+     */
+    java.lang.String getCategory();
+    /**
+     * <code>string category = 4;</code>
+     * @return The bytes for category.
+     */
+    com.google.protobuf.ByteString
+        getCategoryBytes();
+
+    /**
+     * <code>string description = 5;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string description = 5;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
   }
   /**
    * Protobuf type {@code com.findmyclub.Grpc.ClubProto}
@@ -441,6 +465,8 @@ public final class Sep3 {
     private ClubProto() {
       name_ = "";
       location_ = "";
+      category_ = "";
+      description_ = "";
     }
 
     @java.lang.Override
@@ -488,6 +514,18 @@ public final class Sep3 {
               java.lang.String s = input.readStringRequireUtf8();
 
               location_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              category_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
               break;
             }
             default: {
@@ -611,6 +649,82 @@ public final class Sep3 {
       }
     }
 
+    public static final int CATEGORY_FIELD_NUMBER = 4;
+    private volatile java.lang.Object category_;
+    /**
+     * <code>string category = 4;</code>
+     * @return The category.
+     */
+    @java.lang.Override
+    public java.lang.String getCategory() {
+      java.lang.Object ref = category_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        category_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string category = 4;</code>
+     * @return The bytes for category.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCategoryBytes() {
+      java.lang.Object ref = category_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        category_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 5;
+    private volatile java.lang.Object description_;
+    /**
+     * <code>string description = 5;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string description = 5;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -634,6 +748,12 @@ public final class Sep3 {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(location_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, location_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(category_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, category_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, description_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -652,6 +772,12 @@ public final class Sep3 {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(location_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, location_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(category_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, category_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, description_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -674,6 +800,10 @@ public final class Sep3 {
           .equals(other.getName())) return false;
       if (!getLocation()
           .equals(other.getLocation())) return false;
+      if (!getCategory()
+          .equals(other.getCategory())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -691,6 +821,10 @@ public final class Sep3 {
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + LOCATION_FIELD_NUMBER;
       hash = (53 * hash) + getLocation().hashCode();
+      hash = (37 * hash) + CATEGORY_FIELD_NUMBER;
+      hash = (53 * hash) + getCategory().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -830,6 +964,10 @@ public final class Sep3 {
 
         location_ = "";
 
+        category_ = "";
+
+        description_ = "";
+
         return this;
       }
 
@@ -859,6 +997,8 @@ public final class Sep3 {
         result.id_ = id_;
         result.name_ = name_;
         result.location_ = location_;
+        result.category_ = category_;
+        result.description_ = description_;
         onBuilt();
         return result;
       }
@@ -916,6 +1056,14 @@ public final class Sep3 {
         }
         if (!other.getLocation().isEmpty()) {
           location_ = other.location_;
+          onChanged();
+        }
+        if (!other.getCategory().isEmpty()) {
+          category_ = other.category_;
+          onChanged();
+        }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -1126,6 +1274,158 @@ public final class Sep3 {
   checkByteStringIsUtf8(value);
         
         location_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object category_ = "";
+      /**
+       * <code>string category = 4;</code>
+       * @return The category.
+       */
+      public java.lang.String getCategory() {
+        java.lang.Object ref = category_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          category_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string category = 4;</code>
+       * @return The bytes for category.
+       */
+      public com.google.protobuf.ByteString
+          getCategoryBytes() {
+        java.lang.Object ref = category_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          category_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string category = 4;</code>
+       * @param value The category to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCategory(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        category_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string category = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCategory() {
+        
+        category_ = getDefaultInstance().getCategory();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string category = 4;</code>
+       * @param value The bytes for category to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCategoryBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        category_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>string description = 5;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        description_ = value;
         onChanged();
         return this;
       }
@@ -3574,27 +3874,28 @@ public final class Sep3 {
   static {
     java.lang.String[] descriptorData = {
       "\n\nsep3.proto\022\023com.findmyclub.Grpc\032\031googl" +
-      "e/protobuf/any.proto\"7\n\tClubProto\022\n\n\002id\030" +
-      "\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\020\n\010location\030\003 \001(\t\">\n" +
-      "\rClubListProto\022-\n\005clubs\030\001 \003(\0132\036.com.find" +
-      "myclub.Grpc.ClubProto\"\243\001\n\014RequestProto\0226" +
-      "\n\007handler\030\001 \001(\0162%.com.findmyclub.Grpc.Ha" +
-      "ndlerTypeProto\0224\n\006action\030\002 \001(\0162$.com.fin" +
-      "dmyclub.Grpc.ActionTypeProto\022%\n\007payload\030" +
-      "\003 \001(\0132\024.google.protobuf.Any\"l\n\rResponseP" +
-      "roto\0224\n\006status\030\001 \001(\0162$.com.findmyclub.Gr" +
-      "pc.StatusTypeProto\022%\n\007payload\030\002 \001(\0132\024.go" +
-      "ogle.protobuf.Any*9\n\020HandlerTypeProto\022\023\n" +
-      "\017HANDLER_UNKNOWN\020\000\022\020\n\014HANDLER_CLUB\020\001*\177\n\017" +
-      "ActionTypeProto\022\022\n\016ACTION_UNKNOWN\020\000\022\021\n\rA" +
-      "CTION_CREATE\020\001\022\016\n\nACTION_GET\020\002\022\021\n\rACTION" +
-      "_UPDATE\020\003\022\021\n\rACTION_DELETE\020\004\022\017\n\013ACTION_L" +
-      "IST\020\005*b\n\017StatusTypeProto\022\022\n\016STATUS_UNKNO" +
-      "WN\020\000\022\r\n\tSTATUS_OK\020\001\022\020\n\014STATUS_ERROR\020\002\022\032\n" +
-      "\026STATUS_INVALID_PAYLOAD\020\0032n\n\026FindMyClubP" +
-      "rotoService\022T\n\013SendRequest\022!.com.findmyc" +
-      "lub.Grpc.RequestProto\032\".com.findmyclub.G" +
-      "rpc.ResponseProtob\006proto3"
+      "e/protobuf/any.proto\"^\n\tClubProto\022\n\n\002id\030" +
+      "\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\020\n\010location\030\003 \001(\t\022\020\n" +
+      "\010category\030\004 \001(\t\022\023\n\013description\030\005 \001(\t\">\n\r" +
+      "ClubListProto\022-\n\005clubs\030\001 \003(\0132\036.com.findm" +
+      "yclub.Grpc.ClubProto\"\243\001\n\014RequestProto\0226\n" +
+      "\007handler\030\001 \001(\0162%.com.findmyclub.Grpc.Han" +
+      "dlerTypeProto\0224\n\006action\030\002 \001(\0162$.com.find" +
+      "myclub.Grpc.ActionTypeProto\022%\n\007payload\030\003" +
+      " \001(\0132\024.google.protobuf.Any\"l\n\rResponsePr" +
+      "oto\0224\n\006status\030\001 \001(\0162$.com.findmyclub.Grp" +
+      "c.StatusTypeProto\022%\n\007payload\030\002 \001(\0132\024.goo" +
+      "gle.protobuf.Any*9\n\020HandlerTypeProto\022\023\n\017" +
+      "HANDLER_UNKNOWN\020\000\022\020\n\014HANDLER_CLUB\020\001*\177\n\017A" +
+      "ctionTypeProto\022\022\n\016ACTION_UNKNOWN\020\000\022\021\n\rAC" +
+      "TION_CREATE\020\001\022\016\n\nACTION_GET\020\002\022\021\n\rACTION_" +
+      "UPDATE\020\003\022\021\n\rACTION_DELETE\020\004\022\017\n\013ACTION_LI" +
+      "ST\020\005*b\n\017StatusTypeProto\022\022\n\016STATUS_UNKNOW" +
+      "N\020\000\022\r\n\tSTATUS_OK\020\001\022\020\n\014STATUS_ERROR\020\002\022\032\n\026" +
+      "STATUS_INVALID_PAYLOAD\020\0032n\n\026FindMyClubPr" +
+      "otoService\022T\n\013SendRequest\022!.com.findmycl" +
+      "ub.Grpc.RequestProto\032\".com.findmyclub.Gr" +
+      "pc.ResponseProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3606,7 +3907,7 @@ public final class Sep3 {
     internal_static_com_findmyclub_Grpc_ClubProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_findmyclub_Grpc_ClubProto_descriptor,
-        new java.lang.String[] { "Id", "Name", "Location", });
+        new java.lang.String[] { "Id", "Name", "Location", "Category", "Description", });
     internal_static_com_findmyclub_Grpc_ClubListProto_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_findmyclub_Grpc_ClubListProto_fieldAccessorTable = new

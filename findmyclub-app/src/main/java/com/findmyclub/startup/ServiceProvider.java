@@ -5,12 +5,11 @@ import com.findmyclub.networking.handlers.ClubHandler;
 import com.findmyclub.networking.handlers.FindMyClubHandler;
 import com.findmyclub.service.ClubService;
 import com.findmyclub.service.ClubServiceDatabase;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service public class ServiceProvider
 {
-  @Autowired private ClubServiceDatabase clubServiceDatabase;
+  private ClubServiceDatabase clubServiceDatabase;
 
   public ClubService getClubService()
   {

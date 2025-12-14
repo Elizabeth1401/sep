@@ -8,6 +8,8 @@ message ClubProto {
   int32 id = 1;
   string name = 2;
   string location = 3;
+  string category = 4;
+  string description = 5;
 }
 message ClubListProto {
   repeated ClubProto clubs = 1;

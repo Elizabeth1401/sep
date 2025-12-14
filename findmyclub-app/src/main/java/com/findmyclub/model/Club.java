@@ -11,12 +11,18 @@ public class Club
   private String name;
   @Column(name = "location")
   private String location;
+  @Column(name = "category",nullable = false)
+  private String category;
+  @Column(name = "description",nullable = false)
+  private String description;
 
   public Club() {}
 
-  public Club(String name, String location){
+  public Club(String name, String location, String category, String description){
     this.name = name;
     this.location = location;
+    this.category = category;
+    this.description = description;
   }
   // Getters and Setters
   public Integer getId()
@@ -47,5 +53,25 @@ public class Club
   public void setLocation(String location)
   {
     this.location = location;
+  }
+
+  public String getCategory()
+  {
+    return category;
+  }
+
+  public void setCategory(String category)
+  {
+    this.category = category;
+  }
+
+  public String getDescription()
+  {
+    return description;
+  }
+
+  public void setDescription(String description)
+  {
+    this.description = description;
   }
 }

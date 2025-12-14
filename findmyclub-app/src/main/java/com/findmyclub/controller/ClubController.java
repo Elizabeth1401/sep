@@ -30,7 +30,7 @@ public class ClubController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Club create(@RequestBody ClubDTO clubDTO) {
-        Club club = new Club(clubDTO.name, clubDTO.location);
+        Club club = new Club(clubDTO.name, clubDTO.location, clubDTO.category, clubDTO.description);
         return clubRepository.save(club);
     }
 
@@ -54,6 +54,8 @@ public class ClubController {
         var existing = clubRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
         if (clubDTO.name != null) existing.setName(clubDTO.name);
         if (clubDTO.location != null) existing.setLocation(clubDTO.location);
+        if (clubDTO.category != null) existing.setCategory(clubDTO.category);
+        if (clubDTO.description != null) existing.setDescription(clubDTO.description);
         return clubRepository.save(existing);
     }
 
@@ -63,6 +65,8 @@ public class ClubController {
         var existing = clubRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
         existing.setName(clubDTO.name);
         existing.setLocation(clubDTO.location);
+        existing.setCategory(clubDTO.category);
+        existing.setDescription(clubDTO.description);
         return clubRepository.save(existing);
     }
 }

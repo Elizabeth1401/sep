@@ -21,14 +21,15 @@ import java.util.Map;
 @EntityScan("com.findmyclub.model")
 public class APIServiceApplication
 {
-  public static void main(String[] args)
+  public static void main(String[] args) throws Exception
   {
     SpringApplication app = new SpringApplication(APIServiceApplication.class);
     app.setDefaultProperties(Map.of("server.port", "8080"));
     ApplicationContext context = app.run(args);
 
-//    FindMyClubGrpcServer server = context.getBean(FindMyClubGrpcServer.class);
-//    server.start();
+    //Get data to start with from demoAPI
+    ClubRepository clubRepository = context.getBean(ClubRepository.class);
+    context.getBean(CommandLineRunner.class).run(args);
   }
 
   //for you to start with data inside the DB
@@ -37,9 +38,9 @@ public class APIServiceApplication
     return args -> {
       clubRepository.deleteAll();
       System.out.println("Seeding data...");
-      clubRepository.save(new Club("Music","Horsens"));
-      clubRepository.save(new Club("Box","Copenhagen"));
-      clubRepository.save(new Club("Dance","Aarhus"));
+      clubRepository.save(new Club("Wiggly Melody","Horsens", "Music", "We like talking about music"));
+      clubRepository.save(new Club("Boxing Bastards","Copenhagen", "Sport", "We like hitting each other"));
+      clubRepository.save(new Club("Dancing Monkeys","Aarhus", "Sport", "We like dancing around"));
     };
   }
 }

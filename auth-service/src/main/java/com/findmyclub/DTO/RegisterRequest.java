@@ -6,7 +6,10 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class RegisterRequest {
-    // will be in the service: - username unique; - email unique; -password complexity: must contain letter + number + symbol
+    // will be in the service:
+    // - username unique;
+    // - email unique;
+    // -password complexity: must contain letter + number + symbol
     @NotBlank(message = "Username cannot be empty")
     @Size(max = 30, message = "Username cannot exceed 30 characters")
     @Pattern(

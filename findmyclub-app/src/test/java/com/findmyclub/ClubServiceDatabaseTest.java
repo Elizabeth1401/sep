@@ -51,7 +51,7 @@ public class ClubServiceDatabaseTest {
                 .setName("Chess Club")
                 .setLocation("Copenhagen")
                 .build();
-        Club saved = new Club("Chess Club","Copenhagen", "Sport", "Just your simple chess club");
+        Club saved = new Club("Chess Club","Copenhagen", "Just your simple chess club");
         saved.setId(1); //simulate DB-generated ID
 
         when(clubRepository.save(any(Club.class))).thenReturn(saved);
@@ -89,7 +89,7 @@ public class ClubServiceDatabaseTest {
     @Test
     @DisplayName("S-Should return correct club when found")
     void getSingle_ShouldReturnClub(){
-        Club club = new Club("Tennis","Odense", "Sport", "We like playing with balls");
+        Club club = new Club("Tennis","Odense", "We like playing with balls");
         club.setId(3);
         when(clubRepository.findById(3)).thenReturn(Optional.of(club));
 
@@ -126,7 +126,7 @@ public class ClubServiceDatabaseTest {
         @Test
         @DisplayName("O-Should return one club")
         void oneCase_OneClub(){
-            Club club = new Club("Chess","Aalborg", "Sport", "We are superior breed of people");
+            Club club = new Club("Chess","Aalborg", "We are superior breed of people");
             club.setId(6);
             List<Club> clubs = List.of(club);
 
@@ -143,10 +143,10 @@ public class ClubServiceDatabaseTest {
         @DisplayName("M-Should return many clubs")
         void manyCase_MultipleClubs(){
             // Since JPA usually generates the ID, we manually set it in tests.
-            Club club1 = new Club("Chess", "Aalborg", "Sport", "We are superior breed of people");
+            Club club1 = new Club("Chess", "Aalborg", "We are superior breed of people");
             club1.setId(1);  // simulate DB-generated ID
 
-            Club club2 = new Club("Football", "Aarhus", "Sport", "We like hitting balls");
+            Club club2 = new Club("Football", "Aarhus", "We like hitting balls");
             club2.setId(2);  // simulate DB-generated ID
 
             List<Club> clubs = List.of(club1,club2);

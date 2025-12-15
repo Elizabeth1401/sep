@@ -26,7 +26,6 @@ import java.util.Optional;
     //set values
     club.setName(payload.getName());
     club.setLocation(payload.getLocation());
-    club.setCategory(payload.getLocation());
     club.setDescription(payload.getLocation());
     //save entity
     Club created = repository.save(club);
@@ -35,7 +34,6 @@ import java.util.Optional;
         .setId(created.getId())
         .setName(created.getName())
         .setLocation(created.getLocation())
-        .setCategory(created.getCategory())
         .setDescription(created.getDescription())
         .build();
   }
@@ -48,7 +46,6 @@ import java.util.Optional;
     club.setId(payload.getId());
     club.setName(payload.getName());
     club.setLocation(payload.getLocation());
-    club.setCategory(payload.getCategory());
     club.setDescription(payload.getDescription());
     //update entity with the same id
     repository.save(club);
@@ -71,7 +68,6 @@ import java.util.Optional;
         .setId(club.getId())
         .setName(club.getName())
         .setLocation(club.getLocation())
-        .setCategory(club.getCategory())
         .setDescription(club.getDescription())
         .build();
   }
@@ -90,7 +86,6 @@ import java.util.Optional;
           .setId(club.getId())
           .setName(club.getName())
           .setLocation(club.getLocation())
-          .setCategory(club.getCategory())
           .setDescription(club.getDescription())
           .build();
       clubProtoBuilder.addClubs(clubProto);

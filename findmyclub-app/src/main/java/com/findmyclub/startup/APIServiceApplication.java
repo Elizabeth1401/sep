@@ -2,6 +2,7 @@ package com.findmyclub.startup;
 
 import com.findmyclub.model.Club;
 import com.findmyclub.networking.FindMyClubGrpcServer;
+import com.findmyclub.repositories.CategoryRepository;
 import com.findmyclub.repositories.ClubRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -33,14 +34,10 @@ public class APIServiceApplication
   }
 
   //for you to start with data inside the DB
-  @Bean
-  CommandLineRunner demoAPI(ClubRepository clubRepository) {
+  CommandLineRunner demoAPI(ClubRepository clubRepository, CategoryRepository categoryRepository) {
     return args -> {
-      clubRepository.deleteAll();
-      System.out.println("Seeding data...");
-      clubRepository.save(new Club("Wiggly Melody","Horsens",  "We like talking about music"));
-      clubRepository.save(new Club("Boxing Bastards","Copenhagen",  "We like hitting each other"));
-      clubRepository.save(new Club("Dancing Monkeys","Aarhus",  "We like dancing around"));
+
+          DataInitializer.seedData(clubRepository,categoryRepository);
     };
   }
 }

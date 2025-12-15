@@ -1,6 +1,7 @@
 package com.findmyclub.model;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -23,7 +24,7 @@ public class Club
           joinColumns = @JoinColumn(name = "club_id"),
           inverseJoinColumns = @JoinColumn(name = "category_id")
   )
-  private Set<Category> categories;
+  private Set<Category> categories = new HashSet<>();
 
   public Club() {}
 
@@ -71,5 +72,13 @@ public class Club
   public void setDescription(String description)
   {
     this.description = description;
+  }
+
+  public Set<Category> getCategories() {
+    return categories;
+  }
+
+  public void setCategories(Set<Category> categories) {
+    this.categories = categories;
   }
 }

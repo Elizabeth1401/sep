@@ -2,6 +2,7 @@ package com.findmyclub.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 @Entity
 @Table(name = "category")
@@ -14,7 +15,7 @@ public class Category {
     private String name;
 
     @ManyToMany(mappedBy = "categories")
-    private Set<Club> clubs;
+    private Set<Club> clubs = new HashSet<>();
 
     public Category() {}
 

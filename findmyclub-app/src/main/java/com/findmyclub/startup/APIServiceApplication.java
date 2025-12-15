@@ -38,9 +38,9 @@ public class APIServiceApplication
     return args -> {
       clubRepository.deleteAll();
       System.out.println("Seeding data...");
-      clubRepository.save(new Club("Wiggly Melody","Horsens", "Music", "We like talking about music"));
-      clubRepository.save(new Club("Boxing Bastards","Copenhagen", "Sport", "We like hitting each other"));
-      clubRepository.save(new Club("Dancing Monkeys","Aarhus", "Sport", "We like dancing around"));
+      clubRepository.save(new Club("Wiggly Melody","Horsens",  "We like talking about music"));
+      clubRepository.save(new Club("Boxing Bastards","Copenhagen",  "We like hitting each other"));
+      clubRepository.save(new Club("Dancing Monkeys","Aarhus",  "We like dancing around"));
     };
   }
 }

@@ -3,8 +3,11 @@ package com.findmyclub.security;
 import com.findmyclub.model.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
+import java.security.Key;
+import java.util.Base64;
 import java.util.Date;
 @Service
 public class JWTService {
@@ -12,6 +15,10 @@ public class JWTService {
     // usually we cannot commit the secret key into gitHub, and we need to hide it and load from the safe place
     private static final String SECRET_KEY = "yourSecretKeyHerexmgxdghcfhmfcgyhcdfmhfjcgjcgmdcfhmf";
     public String generateToken(User user){
+
+        Key key = Keys.hmacShaKeyFor(
+                Base64.getDecoder().decode(SECRET_KEY));
+
         return Jwts.builder()
                 .setSubject(user.getEmail())
                 .claim("username", user.getUsername())
@@ -19,7 +26,7 @@ public class JWTService {
                 .claim("userId", user.getId())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+ 3600000)) // 1 hour
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 }

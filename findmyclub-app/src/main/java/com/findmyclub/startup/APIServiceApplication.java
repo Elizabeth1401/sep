@@ -1,7 +1,6 @@
 package com.findmyclub.startup;
 
 import com.findmyclub.model.Club;
-import com.findmyclub.networking.FindMyClubGrpcServer;
 import com.findmyclub.repositories.CategoryRepository;
 import com.findmyclub.repositories.ClubRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -28,9 +27,9 @@ public class APIServiceApplication
     app.setDefaultProperties(Map.of("server.port", "8080"));
     ApplicationContext context = app.run(args);
 
-    //Get data to start with from demoAPI
-    ClubRepository clubRepository = context.getBean(ClubRepository.class);
-    context.getBean(CommandLineRunner.class).run(args);
+//    //Get data to start with from demoAPI
+//    ClubRepository clubRepository = context.getBean(ClubRepository.class);
+//    context.getBean(CommandLineRunner.class).run(args);
   }
 
   //for you to start with data inside the DB

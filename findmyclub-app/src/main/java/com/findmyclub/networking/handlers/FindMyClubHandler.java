@@ -1,6 +1,6 @@
 package com.findmyclub.networking.handlers;
 
-import com.findmyclub.Grpc.Sep3.ActionTypeProto;
+import api_service.com.findmyclub.Grpc.Sep3.ActionTypeProto;
 import com.google.protobuf.Message;
 import org.springframework.stereotype.Service;
 

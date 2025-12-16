@@ -15,7 +15,8 @@ import java.util.Map;
 @SpringBootApplication(scanBasePackages = {
     "com.findmyclub.startup",
     "com.findmyclub.service",
-    "com.findmyclub.networking"
+    "com.findmyclub.networking",
+    "com.findmyclub.repositories"
 })
 @EnableJpaRepositories("com.findmyclub.repositories")
 @EntityScan("com.findmyclub.model")

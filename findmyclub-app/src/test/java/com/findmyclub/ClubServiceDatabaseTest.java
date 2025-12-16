@@ -1,6 +1,6 @@
 package com.findmyclub;
 
-import com.findmyclub.Grpc.Sep3;
+import api_service.com.findmyclub.Grpc.Sep3;
 import com.findmyclub.model.Club;
 import com.findmyclub.repositories.ClubRepository;
 import com.findmyclub.service.ClubServiceDatabase;

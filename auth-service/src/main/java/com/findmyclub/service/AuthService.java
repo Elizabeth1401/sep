@@ -97,6 +97,7 @@ import org.springframework.stereotype.Service;
     User user = userRepository.findByEmail(request.getEmail()).orElseThrow(
         () -> new IllegalArgumentException("Invalid email or password"));
 
+    System.out.println("User id: " + user.getId());
     boolean passwordMatches = passwordEncoder.matches(request.getPassword(),
         user.getPasswordHash());
 

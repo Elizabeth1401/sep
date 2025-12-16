@@ -2,7 +2,9 @@ package com.findmyclub.model;
 
 import jakarta.persistence.*;
 
-@Entity @Table(name = "client") // we named the table as client not as user because user is reserved name in postrges
+import java.util.Set;
+
+@Entity @Table(name = "client") // we named the table as client not as user because user is reserved name in postgres
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)private Integer id;
    @Column(nullable = false, length = 30) private String username;
@@ -10,6 +12,20 @@ public class User {
 
    //We store the HASH, not the plain password
    @Column(nullable = false, length = 100) private String passwordHash;
+
+   // for future implementation
+   //Clubs owned by this user
+//   @OneToMany(mappedBy = "owner")
+//   private Set<Club> ownedClubs;
+//
+//    // Favourite clubs
+//    @ManyToMany
+//    @JoinTable(
+//            name = "favourite",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "club_id")
+//    )
+//    private Set<Club> favouriteClubs;
 
     public User() {
         // JPA needs a no-arg constructor

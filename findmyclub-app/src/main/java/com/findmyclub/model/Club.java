@@ -1,27 +1,36 @@
 package com.findmyclub.model;
-
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity @Table(name = "club")
 public class Club
 {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer id;
 
-  @Column(name = "name",nullable = false)
+  @Column(name = "name",nullable = false, length = 100)
   private String name;
-  @Column(name = "location")
+  @Column(name = "location",nullable = false, length = 150)
   private String location;
-  @Column(name = "category",nullable = false)
-  private String category;
-  @Column(name = "description",nullable = false)
+  @Column(name = "description",nullable = false, length = 1000)
   private String description;
+
+  //Category
+  @ManyToMany
+  @JoinTable(
+          name = "club_category",
+          joinColumns = @JoinColumn(name = "club_id"),
+          inverseJoinColumns = @JoinColumn(name = "category_id")
+  )
+  private Set<Category> categories = new HashSet<>();
 
   public Club() {}
 
-  public Club(String name, String location, String category, String description){
+  public Club(String name, String location, String description){
     this.name = name;
     this.location = location;
-    this.category = category;
     this.description = description;
   }
   // Getters and Setters
@@ -55,16 +64,6 @@ public class Club
     this.location = location;
   }
 
-  public String getCategory()
-  {
-    return category;
-  }
-
-  public void setCategory(String category)
-  {
-    this.category = category;
-  }
-
   public String getDescription()
   {
     return description;
@@ -73,5 +72,13 @@ public class Club
   public void setDescription(String description)
   {
     this.description = description;
+  }
+
+  public Set<Category> getCategories() {
+    return categories;
+  }
+
+  public void setCategories(Set<Category> categories) {
+    this.categories = categories;
   }
 }

@@ -1,7 +1,7 @@
 package com.findmyclub.service;
 
-import com.findmyclub.Grpc.Sep3.ClubListProto;
-import com.findmyclub.Grpc.Sep3.ClubProto;
+import api_service.com.findmyclub.Grpc.Sep3.ClubListProto;
+import api_service.com.findmyclub.Grpc.Sep3.ClubProto;
 import com.findmyclub.model.Club;
 import com.findmyclub.repositories.ClubRepository;
 import jakarta.transaction.Transactional;
@@ -26,8 +26,8 @@ import java.util.Optional;
     //set values
     club.setName(payload.getName());
     club.setLocation(payload.getLocation());
-    club.setCategory(payload.getLocation());
-    club.setDescription(payload.getLocation());
+    club.setCategory(payload.getCategory());
+    club.setDescription(payload.getDescription());
     //save entity
     Club created = repository.save(club);
     //creating the proto

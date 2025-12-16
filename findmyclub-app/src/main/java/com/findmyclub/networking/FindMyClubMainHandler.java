@@ -1,9 +1,9 @@
 package com.findmyclub.networking;
 
-import com.findmyclub.Grpc.FindMyClubProtoServiceGrpc;
-import com.findmyclub.Grpc.Sep3.RequestProto;
-import com.findmyclub.Grpc.Sep3.ResponseProto;
-import com.findmyclub.Grpc.Sep3.StatusTypeProto;
+import api_service.com.findmyclub.Grpc.FindMyClubProtoServiceGrpc;
+import api_service.com.findmyclub.Grpc.Sep3.RequestProto;
+import api_service.com.findmyclub.Grpc.Sep3.ResponseProto;
+import api_service.com.findmyclub.Grpc.Sep3.StatusTypeProto;
 import com.findmyclub.networking.handlers.FindMyClubHandler;
 import com.findmyclub.startup.ServiceProvider;
 import com.google.protobuf.Any;

@@ -1,8 +1,7 @@
 package com.findmyclub.networking.handlers;
 
-import com.findmyclub.Grpc.Sep3.ActionTypeProto;
-import com.findmyclub.Grpc.Sep3.ClubProto;
-import com.findmyclub.networking.handlers.FindMyClubHandler;
+import api_service.com.findmyclub.Grpc.Sep3.ActionTypeProto;
+import api_service.com.findmyclub.Grpc.Sep3.ClubProto;
 import com.findmyclub.service.ClubService;
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -11,51 +10,56 @@ import com.google.protobuf.Message;
 public class ClubHandler implements FindMyClubHandler
 {
   private final ClubService service;
-  public ClubHandler (ClubService service)
+
+  public ClubHandler(ClubService service)
   {
-    this.service=service;
+    this.service = service;
   }
 
-  @Override public Message handle(ActionTypeProto actionType, Object payload)
+  @Override
+  public Message handle(ActionTypeProto actionType, Object payload)
   {
-    Message proto = null;
     Any payloadAny = (Any) payload;
-    ClubProto request = null;
+
+    return switch (actionType)
+    {
+      case ACTION_LIST -> service.getMany(); // return ClubListProto (Message)
+
+      case ACTION_GET -> {
+        ClubProto request = unpackClub(payloadAny);
+        yield service.getSingle(request.getId()); // ClubProto
+      }
+
+      case ACTION_CREATE -> {
+        ClubProto request = unpackClub(payloadAny);
+        yield service.create(request); // ClubProto
+      }
+
+      case ACTION_UPDATE -> {
+        ClubProto request = unpackClub(payloadAny);
+        service.update(request);
+        yield ClubProto.newBuilder().build(); // or Empty
+      }
+
+      case ACTION_DELETE -> {
+        ClubProto request = unpackClub(payloadAny);
+        service.delete(request.getId());
+        yield ClubProto.newBuilder().build(); // or Empty
+      }
+
+      default -> throw new IllegalArgumentException("Invalid action type: " + actionType);
+    };
+  }
+
+  private ClubProto unpackClub(Any payloadAny)
+  {
     try
     {
-      request = payloadAny.unpack(ClubProto.class);
+      return payloadAny.unpack(ClubProto.class);
     }
     catch (InvalidProtocolBufferException e)
     {
-      throw new RuntimeException(e);
+      throw new RuntimeException("Invalid payload for Club action", e);
     }
-    switch (actionType) {
-      case ACTION_GET -> {
-        proto = service.getSingle(request.getId());
-      }
-      case ACTION_CREATE -> {
-        proto = service.create(request);
-      }
-      case ACTION_UPDATE -> {
-        service.update(request);
-        break;
-      }
-      case ACTION_DELETE -> {
-        service.delete(request.getId());
-        break;
-      }
-      case ACTION_LIST -> {
-          proto = service.getMany();
-      }
-      default -> {
-        throw new IllegalArgumentException("Invalid action type: " + actionType);
-      }
-    }
-    //sometimes it will return null, no need to check for that
-    //in case of delete
-    if (proto == null) {
-      proto = ClubProto.newBuilder().build();
-    }
-    return Any.pack(proto) ;
   }
 }

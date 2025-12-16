@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package com.findmyclub.Grpc;
+package api_service.com.findmyclub.Grpc;
 
 import "google/protobuf/any.proto";
 

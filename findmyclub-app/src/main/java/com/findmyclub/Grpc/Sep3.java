@@ -427,16 +427,29 @@ public final class Sep3 {
         getLocationBytes();
 
     /**
-     * <code>string category = 4;</code>
-     * @return The category.
+     * <code>repeated string category = 4;</code>
+     * @return A list containing the category.
      */
-    java.lang.String getCategory();
+    java.util.List<java.lang.String>
+        getCategoryList();
     /**
-     * <code>string category = 4;</code>
-     * @return The bytes for category.
+     * <code>repeated string category = 4;</code>
+     * @return The count of category.
+     */
+    int getCategoryCount();
+    /**
+     * <code>repeated string category = 4;</code>
+     * @param index The index of the element to return.
+     * @return The category at the given index.
+     */
+    java.lang.String getCategory(int index);
+    /**
+     * <code>repeated string category = 4;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the category at the given index.
      */
     com.google.protobuf.ByteString
-        getCategoryBytes();
+        getCategoryBytes(int index);
 
     /**
      * <code>string description = 5;</code>
@@ -465,7 +478,7 @@ public final class Sep3 {
     private ClubProto() {
       name_ = "";
       location_ = "";
-      category_ = "";
+      category_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       description_ = "";
     }
 
@@ -489,6 +502,7 @@ public final class Sep3 {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -518,8 +532,11 @@ public final class Sep3 {
             }
             case 34: {
               java.lang.String s = input.readStringRequireUtf8();
-
-              category_ = s;
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                category_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              category_.add(s);
               break;
             }
             case 42: {
@@ -545,6 +562,9 @@ public final class Sep3 {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          category_ = category_.getUnmodifiableView();
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -650,41 +670,38 @@ public final class Sep3 {
     }
 
     public static final int CATEGORY_FIELD_NUMBER = 4;
-    private volatile java.lang.Object category_;
+    private com.google.protobuf.LazyStringList category_;
     /**
-     * <code>string category = 4;</code>
-     * @return The category.
+     * <code>repeated string category = 4;</code>
+     * @return A list containing the category.
      */
-    @java.lang.Override
-    public java.lang.String getCategory() {
-      java.lang.Object ref = category_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        category_ = s;
-        return s;
-      }
+    public com.google.protobuf.ProtocolStringList
+        getCategoryList() {
+      return category_;
     }
     /**
-     * <code>string category = 4;</code>
-     * @return The bytes for category.
+     * <code>repeated string category = 4;</code>
+     * @return The count of category.
      */
-    @java.lang.Override
+    public int getCategoryCount() {
+      return category_.size();
+    }
+    /**
+     * <code>repeated string category = 4;</code>
+     * @param index The index of the element to return.
+     * @return The category at the given index.
+     */
+    public java.lang.String getCategory(int index) {
+      return category_.get(index);
+    }
+    /**
+     * <code>repeated string category = 4;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the category at the given index.
+     */
     public com.google.protobuf.ByteString
-        getCategoryBytes() {
-      java.lang.Object ref = category_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        category_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+        getCategoryBytes(int index) {
+      return category_.getByteString(index);
     }
 
     public static final int DESCRIPTION_FIELD_NUMBER = 5;
@@ -748,8 +765,8 @@ public final class Sep3 {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(location_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, location_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(category_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, category_);
+      for (int i = 0; i < category_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, category_.getRaw(i));
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, description_);
@@ -773,8 +790,13 @@ public final class Sep3 {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(location_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, location_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(category_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, category_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < category_.size(); i++) {
+          dataSize += computeStringSizeNoTag(category_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getCategoryList().size();
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, description_);
@@ -800,8 +822,8 @@ public final class Sep3 {
           .equals(other.getName())) return false;
       if (!getLocation()
           .equals(other.getLocation())) return false;
-      if (!getCategory()
-          .equals(other.getCategory())) return false;
+      if (!getCategoryList()
+          .equals(other.getCategoryList())) return false;
       if (!getDescription()
           .equals(other.getDescription())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -821,8 +843,10 @@ public final class Sep3 {
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + LOCATION_FIELD_NUMBER;
       hash = (53 * hash) + getLocation().hashCode();
-      hash = (37 * hash) + CATEGORY_FIELD_NUMBER;
-      hash = (53 * hash) + getCategory().hashCode();
+      if (getCategoryCount() > 0) {
+        hash = (37 * hash) + CATEGORY_FIELD_NUMBER;
+        hash = (53 * hash) + getCategoryList().hashCode();
+      }
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
       hash = (53 * hash) + getDescription().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -964,8 +988,8 @@ public final class Sep3 {
 
         location_ = "";
 
-        category_ = "";
-
+        category_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         description_ = "";
 
         return this;
@@ -994,9 +1018,14 @@ public final class Sep3 {
       @java.lang.Override
       public com.findmyclub.Grpc.Sep3.ClubProto buildPartial() {
         com.findmyclub.Grpc.Sep3.ClubProto result = new com.findmyclub.Grpc.Sep3.ClubProto(this);
+        int from_bitField0_ = bitField0_;
         result.id_ = id_;
         result.name_ = name_;
         result.location_ = location_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          category_ = category_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
         result.category_ = category_;
         result.description_ = description_;
         onBuilt();
@@ -1058,8 +1087,14 @@ public final class Sep3 {
           location_ = other.location_;
           onChanged();
         }
-        if (!other.getCategory().isEmpty()) {
-          category_ = other.category_;
+        if (!other.category_.isEmpty()) {
+          if (category_.isEmpty()) {
+            category_ = other.category_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureCategoryIsMutable();
+            category_.addAll(other.category_);
+          }
           onChanged();
         }
         if (!other.getDescription().isEmpty()) {
@@ -1094,6 +1129,7 @@ public final class Sep3 {
         }
         return this;
       }
+      private int bitField0_;
 
       private int id_ ;
       /**
@@ -1278,78 +1314,112 @@ public final class Sep3 {
         return this;
       }
 
-      private java.lang.Object category_ = "";
-      /**
-       * <code>string category = 4;</code>
-       * @return The category.
-       */
-      public java.lang.String getCategory() {
-        java.lang.Object ref = category_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          category_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      private com.google.protobuf.LazyStringList category_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureCategoryIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          category_ = new com.google.protobuf.LazyStringArrayList(category_);
+          bitField0_ |= 0x00000001;
+         }
       }
       /**
-       * <code>string category = 4;</code>
-       * @return The bytes for category.
+       * <code>repeated string category = 4;</code>
+       * @return A list containing the category.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getCategoryList() {
+        return category_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string category = 4;</code>
+       * @return The count of category.
+       */
+      public int getCategoryCount() {
+        return category_.size();
+      }
+      /**
+       * <code>repeated string category = 4;</code>
+       * @param index The index of the element to return.
+       * @return The category at the given index.
+       */
+      public java.lang.String getCategory(int index) {
+        return category_.get(index);
+      }
+      /**
+       * <code>repeated string category = 4;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the category at the given index.
        */
       public com.google.protobuf.ByteString
-          getCategoryBytes() {
-        java.lang.Object ref = category_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          category_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+          getCategoryBytes(int index) {
+        return category_.getByteString(index);
       }
       /**
-       * <code>string category = 4;</code>
+       * <code>repeated string category = 4;</code>
+       * @param index The index to set the value at.
        * @param value The category to set.
        * @return This builder for chaining.
        */
       public Builder setCategory(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureCategoryIsMutable();
+        category_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string category = 4;</code>
+       * @param value The category to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCategory(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
-        category_ = value;
+  ensureCategoryIsMutable();
+        category_.add(value);
         onChanged();
         return this;
       }
       /**
-       * <code>string category = 4;</code>
+       * <code>repeated string category = 4;</code>
+       * @param values The category to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllCategory(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureCategoryIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, category_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string category = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearCategory() {
-        
-        category_ = getDefaultInstance().getCategory();
+        category_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
-       * <code>string category = 4;</code>
-       * @param value The bytes for category to set.
+       * <code>repeated string category = 4;</code>
+       * @param value The bytes of the category to add.
        * @return This builder for chaining.
        */
-      public Builder setCategoryBytes(
+      public Builder addCategoryBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
-        category_ = value;
+        ensureCategoryIsMutable();
+        category_.add(value);
         onChanged();
         return this;
       }
@@ -3876,7 +3946,7 @@ public final class Sep3 {
       "\n\nsep3.proto\022\023com.findmyclub.Grpc\032\031googl" +
       "e/protobuf/any.proto\"^\n\tClubProto\022\n\n\002id\030" +
       "\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\020\n\010location\030\003 \001(\t\022\020\n" +
-      "\010category\030\004 \001(\t\022\023\n\013description\030\005 \001(\t\">\n\r" +
+      "\010category\030\004 \003(\t\022\023\n\013description\030\005 \001(\t\">\n\r" +
       "ClubListProto\022-\n\005clubs\030\001 \003(\0132\036.com.findm" +
       "yclub.Grpc.ClubProto\"\243\001\n\014RequestProto\0226\n" +
       "\007handler\030\001 \001(\0162%.com.findmyclub.Grpc.Han" +

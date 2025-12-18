@@ -1,14 +1,11 @@
 package com.findmyclub.startup;
 
-import com.findmyclub.model.Club;
-import com.findmyclub.repositories.CategoryRepository;
 import com.findmyclub.repositories.ClubRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import java.util.Map;
 
@@ -34,10 +31,10 @@ public class APIServiceApplication
   }
 
   //for you to start with data inside the DB
-  CommandLineRunner demoAPI(ClubRepository clubRepository, CategoryRepository categoryRepository) {
+  CommandLineRunner demoAPI(ClubRepository clubRepository) {
     return args -> {
 
-          DataInitializer.seedData(clubRepository,categoryRepository);
+          DataInitializer.seedData(clubRepository);
     };
   }
 }

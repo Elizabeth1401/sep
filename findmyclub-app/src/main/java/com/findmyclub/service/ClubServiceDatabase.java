@@ -7,8 +7,7 @@ import com.findmyclub.repositories.ClubRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service public class ClubServiceDatabase implements ClubService
 {
@@ -23,19 +22,23 @@ import java.util.Optional;
   public ClubProto create(ClubProto payload)
   {
     Club club = new Club();
-    //set values
     club.setName(payload.getName());
     club.setLocation(payload.getLocation());
     club.setDescription(payload.getDescription());
-    //save entity
+    club.setCategories(payload.getCategory());
+
     Club created = repository.save(club);
-    //creating the proto
-    return ClubProto.newBuilder()
+
+    // Build proto with all categories
+    ClubProto.Builder builder = ClubProto.newBuilder()
         .setId(created.getId())
         .setName(created.getName())
         .setLocation(created.getLocation())
         .setDescription(created.getDescription())
-        .build();
+        .setCategory(created.getCategory());
+
+
+    return builder.build();
   }
 
   @Transactional @Override public void update(ClubProto payload)
@@ -47,6 +50,7 @@ import java.util.Optional;
     club.setName(payload.getName());
     club.setLocation(payload.getLocation());
     club.setDescription(payload.getDescription());
+    club.setCategories(payload.getCategory());
     //update entity with the same id
     repository.save(club);
   }
@@ -69,6 +73,7 @@ import java.util.Optional;
         .setName(club.getName())
         .setLocation(club.getLocation())
         .setDescription(club.getDescription())
+        .setCategory(club.getCategory())
         .build();
   }
 
@@ -87,6 +92,7 @@ import java.util.Optional;
           .setName(club.getName())
           .setLocation(club.getLocation())
           .setDescription(club.getDescription())
+          .setCategory(club.getCategory())
           .build();
       clubProtoBuilder.addClubs(clubProto);
     }

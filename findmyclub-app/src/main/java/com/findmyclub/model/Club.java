@@ -19,7 +19,6 @@ public class Club
   @Column(name = "category",nullable = false, length = 255)
   private String category;
 
-
   public Club() {}
 
   public Club(String name, String location, String description,String category){
@@ -74,8 +73,7 @@ public class Club
     return category;
   }
 
-
-  public void setCategories(String category)
+  public void setCategory(String category)
   {
     this.category = category;
   }

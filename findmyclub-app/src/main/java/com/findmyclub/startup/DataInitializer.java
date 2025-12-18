@@ -38,7 +38,7 @@ public class DataInitializer {
                     "Dancing Monkeys",
                     "Aarhus",
                     "We like dancing around",
-                "dance"
+                "Dance"
             );
 
             clubRepository.saveAll(List.of(club1, club2, club3));

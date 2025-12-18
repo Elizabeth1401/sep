@@ -25,7 +25,7 @@ import java.util.*;
     club.setName(payload.getName());
     club.setLocation(payload.getLocation());
     club.setDescription(payload.getDescription());
-    club.setCategories(payload.getCategory());
+    club.setCategory(payload.getCategory());
 
     Club created = repository.save(club);
 
@@ -50,7 +50,7 @@ import java.util.*;
     club.setName(payload.getName());
     club.setLocation(payload.getLocation());
     club.setDescription(payload.getDescription());
-    club.setCategories(payload.getCategory());
+    club.setCategory(payload.getCategory());
     //update entity with the same id
     repository.save(club);
   }

@@ -16,22 +16,17 @@ public class Club
   private String location;
   @Column(name = "description",nullable = false, length = 1000)
   private String description;
+  @Column(name = "category",nullable = false, length = 255)
+  private String category;
 
-  //Category
-  @ManyToMany
-  @JoinTable(
-          name = "club_category",
-          joinColumns = @JoinColumn(name = "club_id"),
-          inverseJoinColumns = @JoinColumn(name = "category_id")
-  )
-  private Set<Category> categories = new HashSet<>();
 
   public Club() {}
 
-  public Club(String name, String location, String description){
+  public Club(String name, String location, String description,String category){
     this.name = name;
     this.location = location;
     this.description = description;
+    this.category = category;
   }
   // Getters and Setters
   public Integer getId()
@@ -74,11 +69,14 @@ public class Club
     this.description = description;
   }
 
-  public Set<Category> getCategories() {
-    return categories;
+  public String getCategory()
+  {
+    return category;
   }
 
-  public void setCategories(Set<Category> categories) {
-    this.categories = categories;
+
+  public void setCategories(String category)
+  {
+    this.category = category;
   }
 }

@@ -16,6 +16,6 @@ public class ServiceConfig {
 
   @Bean
   public ClubServiceDatabase clubServiceDatabase() {
-    return new ClubServiceDatabase(clubRepository);
+    return new ClubServiceDatabase(clubRepository );
   }
 }
